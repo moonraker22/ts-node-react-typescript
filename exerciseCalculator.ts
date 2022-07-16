@@ -24,14 +24,14 @@ const calculateExercises = (dailyExercises: number[], target: number): Result =>
         target,
         average
     };
-}
+};
 
 const parseArguments = (args: string[]): number[] => {
     if (args.length < 4) throw new Error('Not enough arguments');
     if (args.length > 12) throw new Error('Too many arguments');
     const dailyExercises = args.slice(3).map(Number);
     return dailyExercises;
-}
+};
 
 const target = Number(process.argv[2]);
 
@@ -40,7 +40,13 @@ try {
     const dailyExercises = parseArguments(process.argv);
     console.log(calculateExercises(dailyExercises, target));
 } catch (error) {
-    console.log('Whoops! Something Happened!!: ', error.message);
+    if (error instanceof Error) {
+        console.log('Error, something bad happened, message: ', error?.message);
+    } else {
+        console.log('Error, something bad happened, message: ', error);
+    }
 }
 
 // console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+
+export default calculateExercises;

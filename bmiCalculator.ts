@@ -1,5 +1,5 @@
-const height:number = Number(process.argv[2]);
-const weight:number = Number(process.argv[3]); 
+// const height:number = Number(process.argv[2]);
+// const weight:number = Number(process.argv[3]); 
 
 const calcBMI = (height: number, weight: number): string => {
     const result: number = weight / (height / 100) ** 2;
@@ -13,6 +13,8 @@ const calcBMI = (height: number, weight: number): string => {
         return 'Overweight (predium)';
     }
     return 'Obese (morbidly)';
-}
+};
 
-console.log(calcBMI(height, weight));
+// console.log(calcBMI(height, weight));
+
+export default calcBMI;

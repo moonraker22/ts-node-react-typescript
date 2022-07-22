@@ -1,16 +1,15 @@
 interface CoursePartsObj {
-    name: string;
-    exerciseCount: number;
+  name: string
+  exerciseCount: number
 }
-type CourseParts = Array<CoursePartsObj>;
+type CourseParts = Array<CoursePartsObj>
 
-const Total = ({parts}: {parts: CourseParts}) => {
-
+const Total = ({ parts }: { parts: CourseParts }) => {
   return (
-    <div> <p>
-        Number of exercises{" "}
-        {parts.reduce((carry, part) => carry + part.exerciseCount, 0)}
-      </p></div>
+    <strong>
+      Number of exercises{' '}
+      {parts.reduce((carry, part) => carry + part.exerciseCount, 0)}
+    </strong>
   )
 }
 

@@ -1,17 +1,10 @@
-interface CoursePartsObj {
-    name: string;
-    exerciseCount: number;
-}
-type CourseParts = Array<CoursePartsObj>;
+import Part from './Part'
+import { CoursePart } from '../App'
 
-const Content = ({parts}:{parts:CourseParts}) => {
+const Content = ({ parts }: { parts: CoursePart[] }) => {
   return (
     <div>
-        {parts.map(coursePart => (
-            <p key={coursePart.name}>
-                {coursePart.name} {coursePart.exerciseCount}
-            </p>
-        ))}
+      <Part parts={parts} />
     </div>
   )
 }

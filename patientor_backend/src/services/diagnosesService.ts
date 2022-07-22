@@ -1,7 +1,6 @@
 import diagnoses from '../../data/diagnoses';
 import { Diagnoses } from '../types';
 
-// const diagnoses : Array<Diagnoses> = diagnosesData;
 
 const getDiagnoses = (): Diagnoses[] => {
   return diagnoses;

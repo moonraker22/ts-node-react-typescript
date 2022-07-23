@@ -1,5 +1,10 @@
 import { State } from './state'
 import { Patient } from '../types'
+import {
+  SET_PATIENT_LIST,
+  ADD_PATIENT,
+  SET_DISPLAY_PATIENT,
+} from './../constants'
 
 export type Action =
   | {
@@ -17,7 +22,7 @@ export type Action =
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'SET_PATIENT_LIST':
+    case SET_PATIENT_LIST:
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return {
         ...state,
@@ -30,7 +35,7 @@ export const reducer = (state: State, action: Action): State => {
           ...state.patients,
         },
       }
-    case 'ADD_PATIENT':
+    case ADD_PATIENT:
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return {
         ...state,
@@ -40,7 +45,7 @@ export const reducer = (state: State, action: Action): State => {
           [action.payload.id]: action.payload,
         },
       }
-    case 'SET_DISPLAY_PATIENT':
+    case SET_DISPLAY_PATIENT:
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return {
         ...state,

@@ -15,8 +15,8 @@ import { TableBody } from '@material-ui/core'
 import { Link } from '@material-ui/core'
 
 const PatientListPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
   const [{ patients }, dispatch] = useStateValue()
-
   const [modalOpen, setModalOpen] = React.useState<boolean>(false)
   const [error, setError] = React.useState<string>()
 
@@ -33,6 +33,7 @@ const PatientListPage = () => {
         `${apiBaseUrl}/patients`,
         values
       )
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-call
       dispatch(addPatient(newPatient))
       closeModal()
     } catch (e: unknown) {

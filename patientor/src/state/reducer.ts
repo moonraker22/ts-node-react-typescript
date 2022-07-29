@@ -1,9 +1,10 @@
 import { State } from './state'
-import { Patient } from '../types'
+import { Patient, Diagnosis } from '../types'
 import {
   SET_PATIENT_LIST,
   ADD_PATIENT,
   SET_DISPLAY_PATIENT,
+  SET_DIAGNOSIS_LIST,
 } from './../constants'
 
 export type Action =
@@ -18,6 +19,10 @@ export type Action =
   | {
       type: 'SET_DISPLAY_PATIENT'
       payload: Patient
+    }
+  | {
+      type: 'SET_DIAGNOSIS_LIST'
+      payload: Diagnosis[]
     }
 
 export const reducer = (state: State, action: Action): State => {
@@ -51,6 +56,19 @@ export const reducer = (state: State, action: Action): State => {
         ...state,
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         patientDisplay: { patient: action.payload },
+      }
+    case SET_DIAGNOSIS_LIST:
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      return {
+        ...state,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        diagnoses: {
+          ...action.payload.reduce(
+            (memo, diagnosis) => ({ ...memo, [diagnosis.code]: diagnosis }),
+            {}
+          ),
+          ...state.diagnoses,
+        },
       }
 
     default:
